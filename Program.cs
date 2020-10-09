@@ -1,4 +1,7 @@
-﻿using yDesign.观察者模式;
+﻿using yDesign.工厂模式.工厂方法;
+using yDesign.工厂模式.抽象工厂;
+using yDesign.工厂模式.简单工厂;
+using yDesign.观察者模式;
 
 namespace yDesign
 {
@@ -6,17 +9,43 @@ namespace yDesign
     {
         private static void Main()
         {
-            const DesignPatterns designPatterns = DesignPatterns.观察者模式;
+            const DesignPatterns designPatterns = DesignPatterns.工厂模式;
             switch (designPatterns)
             {
+                case DesignPatterns.工厂模式:
+                    //简单工厂
+                    BookFactory bookFactory = new BookFactory();
+                    IBook chineseBook1 = bookFactory.CreateBook("语文");
+                    IBook mathBook1 = bookFactory.CreateBook("数学");
+                    chineseBook1.Info();
+                    mathBook1.Info();
+                    //工厂方法
+                    ChineseBookFactory chineseBookFactory = new ChineseBookFactory();
+                    MathBookFactory mathBookFactory = new MathBookFactory();
+                    IBook chineseBook2 = chineseBookFactory.CreateBook();
+                    IBook mathBook2 = mathBookFactory.CreateBook();
+                    chineseBook2.Info();
+                    mathBook2.Info();
+                    //抽象工厂
+                    FirstGradeBookFactory firstGradeBookFactory = new FirstGradeBookFactory();
+                    SecondGradeFactory secondGradeFactory = new SecondGradeFactory();
+                    IBook chineseBook3 = firstGradeBookFactory.CreateChineseBook();
+                    IBook mathBook3 = firstGradeBookFactory.CreateMathBook();
+                    chineseBook3.Info();
+                    mathBook3.Info();
+                    IBook chineseBook4 = secondGradeFactory.CreateChineseBook();
+                    IBook mathBook4 = secondGradeFactory.CreateMathBook();
+                    chineseBook4.Info();
+                    mathBook4.Info();
+                    break;
                 case DesignPatterns.观察者模式:
-                    //声明被观察者
+                    //被观察者
                     Hero hero = new Hero();
                     //添加观察者
                     hero.AttachObserver(new Monster());
                     hero.AttachObserver(new Trap());
                     hero.AttachObserver(new Treasure());
-                    //触发观察者回调方法
+                    //通知观察者
                     hero.Move();
                     break;
             }
@@ -28,10 +57,9 @@ namespace yDesign
     /// </summary>
     public enum DesignPatterns
     {
-        单件模式,
-        抽象工厂,
+        单例模式,
+        工厂模式,
         建造者模式,
-        工厂方法模式,
         原型模式,
         适配器模式,
         桥接模式,
