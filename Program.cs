@@ -3,6 +3,7 @@ using yDesign.单例模式;
 using yDesign.工厂模式.工厂方法;
 using yDesign.工厂模式.抽象工厂;
 using yDesign.工厂模式.简单工厂;
+using yDesign.装饰模式;
 using yDesign.观察者模式;
 
 namespace yDesign
@@ -11,7 +12,7 @@ namespace yDesign
     {
         private static void Main()
         {
-            const DesignPatterns designPatterns = DesignPatterns.单例模式;
+            const DesignPatterns designPatterns = DesignPatterns.装饰模式;
             switch (designPatterns)
             {
                 case DesignPatterns.单例模式:
@@ -43,6 +44,14 @@ namespace yDesign
                     IBook mathBook4 = secondGradeFactory.CreateMathBook();
                     chineseBook4.Info();
                     mathBook4.Info();
+                    break;
+                case DesignPatterns.装饰模式:
+                    Zhangsan zhangsan = new Zhangsan();
+                    ZhangsanSayA zhangsanSayA = new ZhangsanSayA();
+                    ZhangsanSayB zhangsanSayB = new ZhangsanSayB();
+                    zhangsanSayA.SetPerson(zhangsan);
+                    zhangsanSayB.SetPerson(zhangsanSayA);
+                    zhangsanSayB.Say();
                     break;
                 case DesignPatterns.观察者模式:
                     //被观察者
