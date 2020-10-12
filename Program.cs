@@ -1,4 +1,5 @@
 ﻿using System;
+using yDesign.代理模式;
 using yDesign.单例模式;
 using yDesign.外观模式;
 using yDesign.工厂模式.工厂方法;
@@ -13,7 +14,7 @@ namespace yDesign
     {
         private static void Main()
         {
-            const DesignPatterns designPatterns = DesignPatterns.外观模式;
+            const DesignPatterns designPatterns = DesignPatterns.代理模式;
             switch (designPatterns)
             {
                 case DesignPatterns.单例模式:
@@ -57,6 +58,13 @@ namespace yDesign
                 case DesignPatterns.外观模式:
                     Lisi lisi = new Lisi();
                     lisi.OneDay();
+                    break;
+                case DesignPatterns.代理模式:
+                    MathProxy proxy = new MathProxy();
+                    Console.WriteLine("8 + 2 = " + proxy.Add(8, 2));
+                    Console.WriteLine("8 - 2 = " + proxy.Sub(8, 2));
+                    Console.WriteLine("8 * 2 = " + proxy.Mul(8, 2));
+                    Console.WriteLine("8 / 2 = " + proxy.Div(8, 2));
                     break;
                 case DesignPatterns.观察者模式:
                     //被观察者
