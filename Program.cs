@@ -14,7 +14,7 @@ namespace yDesign
     {
         private static void Main()
         {
-            const DesignPatterns designPatterns = DesignPatterns.代理模式;
+            const DesignPatterns designPatterns = DesignPatterns.装饰模式;
             switch (designPatterns)
             {
                 case DesignPatterns.单例模式:
@@ -51,8 +51,8 @@ namespace yDesign
                     Zhangsan zhangsan = new Zhangsan();
                     ZhangsanSayA zhangsanSayA = new ZhangsanSayA();
                     ZhangsanSayB zhangsanSayB = new ZhangsanSayB();
-                    zhangsanSayA.SetPerson(zhangsan);
-                    zhangsanSayB.SetPerson(zhangsanSayA);
+                    zhangsanSayA.Tell(zhangsan);
+                    zhangsanSayB.Tell(zhangsanSayA);
                     zhangsanSayB.Say();
                     break;
                 case DesignPatterns.外观模式:

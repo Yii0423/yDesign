@@ -4,7 +4,7 @@
     {
         private Person _person;
 
-        public void SetPerson(Person person)
+        public void Tell(Person person)
         {
             _person = person;
         }
